@@ -1,1 +1,4 @@
 *.un~
+node_modules/
+npm-debug.log
+host
