@@ -30,7 +30,7 @@ module.exports = {
   ],
   output: {
     filename: 'app.js',
-    path: path.join(__dirname, "build")
+    path: path.resolve(__dirname, "build")
   },
   resolve: {
     alias: {
