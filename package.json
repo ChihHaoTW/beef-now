@@ -23,6 +23,7 @@
     "json-loader": "^0.5.3",
     "livescript": "^1.4.0",
     "livescript-loader": "^0.1.5",
+    "moment": "^2.10.6",
     "nib": "^1.1.0",
     "node-libs-browser": "^0.5.2",
     "path": "^0.12.7",
