@@ -39,6 +39,7 @@ module.exports = {
       react: 'react/dist/react.js',
       'react-dom': 'react-dom/dist/react-dom.js',
       typeset: 'typeset/src/index.js',
+      moment: 'moment/moment.js'
     },
     modulesDirectories: [
       'app',
