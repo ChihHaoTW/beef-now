@@ -5,12 +5,20 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      cur_time: moment()
+      data: require('res/beef2.json'),
+      cur_time: null
     }
   }
   render() {
     return <div id='app'>
-      {this.state.cur_time.format('H:m')}
+      <button onClick={() => this.setState({cur_time: moment()})}>
+        start
+      </button>
+      <div>
+        { this.state.cur_time ?
+          this.state.data.filter(e => this.state.cur_time.isBetween(moment(e.startTime, 'H:m'), moment(e.endTime, 'H:m')))
+            .map(e => <h2>{e.title}</h2>) : null }
+      </div>
     </div>
   }
 }
