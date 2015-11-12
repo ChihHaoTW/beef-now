@@ -1,5 +1,8 @@
 import ReactDOM from 'react-dom'
 import moment from 'moment'
+import 'semanticJS'
+import 'semanticCSS'
+import './app.styl'
 
 class App extends React.Component {
   constructor() {
