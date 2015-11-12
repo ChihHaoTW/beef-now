@@ -14,14 +14,31 @@ class App extends React.Component {
   }
   render() {
     return <div id='app'>
-      <button onClick={() => this.setState({cur_time: moment()})}>
+      <button id='start' className='center' onClick={() => this.setState({cur_time: moment()})}>
         start
       </button>
-      <div>
-        { this.state.cur_time ?
-          this.state.data.filter(e => this.state.cur_time.isBetween(moment(e.startTime, 'H:m'), moment(e.endTime, 'H:m')))
-            .map(e => <h2>{e.title}</h2>) : null }
-      </div>
+      <table className='beefs center ui celled table'>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          { this.state.cur_time ?
+            this.state.data.filter(e => this.state.cur_time.isBetween(moment(e.startTime, 'H:m'), moment(e.endTime, 'H:m')))
+              .map(e => <tr> 
+                <td>{e.title}</td> 
+                <td>{e.價格}</td> 
+                <td>{e.startTime}</td> 
+                <td>{e.endTime}</td> 
+                <td>{e.地址}</td> 
+              </tr>) : null }
+        </tbody>
+      </table>
     </div>
   }
 }
