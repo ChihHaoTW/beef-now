@@ -10,19 +10,9 @@ gulp.task \dev-server !->
   config = require \./webpack.config.js
   config.entry.unshift "webpack-dev-server/client?http://#host:#dev-port", "webpack/hot/dev-server"
   compiler = webpack config
-  server = new webpackDevServer compiler, {
-    stats: {+colors}, +hot }
+  server = new webpackDevServer compiler, { stats: {+colors}, +hot }
   err <-! server.listen dev-port, host
   return console.log err if err
-
-gulp.task \server !->
-  port = parseInt fs.read-file-sync \./port
-  require! \express
-  express-server = express!
-  router = require \./router.ls
-  router.init express-server
-  router.counter!
-  express-server.listen port
 
 gulp.task \default <[dev-server]>
 
