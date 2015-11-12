@@ -15,8 +15,9 @@ module.exports = {
       { test: /\.ls$/, loader: 'livescript' },
       { test: /\.json$/, loader: 'json-loader' },
       { test: /\.jsx?$/, exclude: /\/node_modules\//, loader: 'babel' },
-      { test: /\/res\/image\//, loader: 'url-loader?limit=10000' },
+      { test: /\.(jpg|jpeg|png|bmp)$/, loader: 'url-loader?limit=10000' },
       { test: /\.styl$/, loader: 'style!css!stylus' },
+      { test: /\.css$/, loader: 'style!css' },
       { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url-loader?limit=10000&mimetype=image/svg+xml" },
       { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url-loader?limit=10000&mimetype=application/octet-stream" },
       { test: /\.woff2?(\?v=\d+\.\d+\.\d+)?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
@@ -26,7 +27,7 @@ module.exports = {
   plugins: [
     new htmlWebpackPlugin({ title: 'beef-now' }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.ProvidePlugin({ $: 'jquery', app: 'app', React: 'react' })
+    new webpack.ProvidePlugin({ jQuery: 'jquery', $: 'jquery', app: 'app', React: 'react' })
   ],
   output: {
     filename: 'app.js',
@@ -38,7 +39,9 @@ module.exports = {
       jquery: 'jquery/dist/jquery.min.js',
       react: 'react/dist/react.js',
       'react-dom': 'react-dom/dist/react-dom.js',
-      typeset: 'typeset/src/index.js'
+      typeset: 'typeset/src/index.js',
+      semanticJS: 'semantic-ui-css/semantic.min.js',
+      semanticCSS: 'semantic-ui-css/semantic.min.css'
     },
     modulesDirectories: [
       'app',
