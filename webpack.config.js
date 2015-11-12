@@ -38,8 +38,7 @@ module.exports = {
       jquery: 'jquery/dist/jquery.min.js',
       react: 'react/dist/react.js',
       'react-dom': 'react-dom/dist/react-dom.js',
-      typeset: 'typeset/src/index.js',
-      moment: 'moment/moment.js'
+      typeset: 'typeset/src/index.js'
     },
     modulesDirectories: [
       'app',
