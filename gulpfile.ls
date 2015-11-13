@@ -1,6 +1,6 @@
 require! <[fs gulp webpack webpack-dev-server express]>
 
-dev-port = 9090
+dev-port = fs.read-file-sync \./dev-port
 
 gulp.task \dev-server !->
   if fs.exists-sync \./host
