@@ -33,15 +33,14 @@ class App extends React.Component {
             this.state.cur_time ?
             this.state.data.filter(e => {
               var startTime, endTime, timeArray;
-              //console.log(e.openTime[this.state.cur_time.format("ddd")]);
-              if(e.openTime[this.state.cur_time.format("ddd")][0] != null)
-                timeArray = e.openTime[this.state.cur_time.format("ddd")][0].split("-");
+              if(e.openTime[this.state.cur_time.format("ddd")][0])
+                timeArray = e.openTime[this.state.cur_time.format("ddd")][0].split("-")
               
-              startTime= timeArray[0];
-              if(timeArray[1] == null) endTime = "24:00";
-              else endTime = timeArray[1];
+              startTime= timeArray[0]
+              if(!timeArray[1]) endTime = "24:00"
+              else endTime = timeArray[1]
 
-              return this.state.cur_time.isBetween(moment(startTime, 'H:m'), moment(endTime, 'H:m'));
+              return this.state.cur_time.isBetween(moment(startTime, 'H:m'), moment(endTime, 'H:m'))
               
              }).map(e => <tr> 
                 <td>{e.title}</td> 
