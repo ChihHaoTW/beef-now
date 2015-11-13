@@ -9,7 +9,7 @@ var startTime, endTime, timeArray;
 console.log("now time: " + now.format("ddd H:m"));
 for(var row in json){
 	for(var each in json[row]["openTime"]) {
-		if(each == now.format("ddd")) {
+		if(each == now.format("ddd") && json[row]["openTime"][each][0] != null) {
 			timeArray = json[row]["openTime"][each][0].split("-");
 			startTime = timeArray[0];
 			if(timeArray[1] == null) endTime = "24:00";
