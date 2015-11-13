@@ -2,7 +2,7 @@ var fs = require('fs');
 var GoogleSpreadsheet  = require('google-spreadsheet');
 var sheet = new GoogleSpreadsheet('18AYlrW4MlIlEouQ4IYRh3kOfdOJJNhIYxHMmP9rWZHs');
 var saveFileName = 'beef.json';
-var sliceFileName = 'beef2.json';
+var sliceFileName = 'beef3.json';
 
 function getSheet(){
 	sheet.getRows(1, function(err, row_data){
@@ -18,15 +18,49 @@ function getSheet(){
 				tmp = tmp.replace(/24HR/, "00:00-24:00");
 				row_data[i]["開店時間"] = tmp;	
 				
-				var re = /(\d*:\d*)-(賣完為止|\d*:\d*)?/;
+				var re = /(\d*:\d*)-(賣完為止|\d*:\d*)?/g;
 				var result = row_data[i]["開店時間"].match(re);
+
 				if(!result) continue;
-				if(result[1]) row_data[i]["startTime"] = result[1];
-				if(result[2]) row_data[i]["endTime"] = result[2];
+
+				if(!row_data[i]["公休時間"]) row_data[i]["公休時間"] = "無";
+				if(result){
+					row_data[i]["openTime"] = {};
+					switch(row_data[i]["公休時間"]){
+						case "週一":
+							row_data[i]["openTime"]["Mon"] = "";
+							row_data[i]["openTime"]["Tue"] = result;
+							row_data[i]["openTime"]["Wen"] = result;
+							row_data[i]["openTime"]["Thu"] = result;
+							row_data[i]["openTime"]["Fri"] = result;
+							row_data[i]["openTime"]["Set"] = result;
+							row_data[i]["openTime"]["Sun"] = result;
+							break;
+						case "週二":
+							row_data[i]["openTime"]["Mon"] = result;
+							row_data[i]["openTime"]["Tue"] = "";
+							row_data[i]["openTime"]["Wen"] = result;
+							row_data[i]["openTime"]["Thu"] = result;
+							row_data[i]["openTime"]["Fri"] = result;
+							row_data[i]["openTime"]["Set"] = result;
+							row_data[i]["openTime"]["Sun"] = result;
+							break;
+						default:
+							row_data[i]["openTime"]["Mon"] = result;
+							row_data[i]["openTime"]["Tue"] = result;
+							row_data[i]["openTime"]["Wen"] = result;
+							row_data[i]["openTime"]["Thu"] = result;
+							row_data[i]["openTime"]["Fri"] = result;
+							row_data[i]["openTime"]["Set"] = result;
+							row_data[i]["openTime"]["Sun"] = result;
+							break;
+					}
+				}
+				
 				if(result != null){
-					console.log(i);
-					console.log(row_data[i]["startTime"]);
-					console.log(row_data[i]["endTime"]);
+					console.log(row_data[i]["title"]);
+					console.log(row_data[i]["openTime"]);
+					//console.log(result);
 				// 	console.log(result+"\n");	
 				}	
 			
