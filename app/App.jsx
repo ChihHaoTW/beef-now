@@ -29,9 +29,21 @@ class App extends React.Component {
           </tr>
         </thead>
         <tbody>
-          { this.state.cur_time ?
-            this.state.data.filter(e => this.state.cur_time.isBetween(moment(e.startTime, 'H:m'), moment(e.endTime, 'H:m')))
-              .map(e => <tr> 
+          { 
+            this.state.cur_time ?
+            this.state.data.filter(e => {
+              var startTime, endTime, timeArray;
+              //console.log(e.openTime[this.state.cur_time.format("ddd")]);
+              if(e.openTime[this.state.cur_time.format("ddd")][0] != null)
+                timeArray = e.openTime[this.state.cur_time.format("ddd")][0].split("-");
+              
+              startTime= timeArray[0];
+              if(timeArray[1] == null) endTime = "24:00";
+              else endTime = timeArray[1];
+
+              return this.state.cur_time.isBetween(moment(startTime, 'H:m'), moment(endTime, 'H:m'));
+              
+             }).map(e => <tr> 
                 <td>{e.title}</td> 
                 <td>{e.價格}</td> 
                 <td>{e.startTime}</td> 

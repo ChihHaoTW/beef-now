@@ -30,28 +30,28 @@ function getSheet(){
 						case "週一":
 							row_data[i]["openTime"]["Mon"] = "";
 							row_data[i]["openTime"]["Tue"] = result;
-							row_data[i]["openTime"]["Wen"] = result;
+							row_data[i]["openTime"]["Wed"] = result;
 							row_data[i]["openTime"]["Thu"] = result;
 							row_data[i]["openTime"]["Fri"] = result;
-							row_data[i]["openTime"]["Set"] = result;
+							row_data[i]["openTime"]["Sat"] = result;
 							row_data[i]["openTime"]["Sun"] = result;
 							break;
 						case "週二":
 							row_data[i]["openTime"]["Mon"] = result;
 							row_data[i]["openTime"]["Tue"] = "";
-							row_data[i]["openTime"]["Wen"] = result;
+							row_data[i]["openTime"]["Wed"] = result;
 							row_data[i]["openTime"]["Thu"] = result;
 							row_data[i]["openTime"]["Fri"] = result;
-							row_data[i]["openTime"]["Set"] = result;
+							row_data[i]["openTime"]["Sat"] = result;
 							row_data[i]["openTime"]["Sun"] = result;
 							break;
 						default:
 							row_data[i]["openTime"]["Mon"] = result;
 							row_data[i]["openTime"]["Tue"] = result;
-							row_data[i]["openTime"]["Wen"] = result;
+							row_data[i]["openTime"]["Wed"] = result;
 							row_data[i]["openTime"]["Thu"] = result;
 							row_data[i]["openTime"]["Fri"] = result;
-							row_data[i]["openTime"]["Set"] = result;
+							row_data[i]["openTime"]["Sat"] = result;
 							row_data[i]["openTime"]["Sun"] = result;
 							break;
 					}
