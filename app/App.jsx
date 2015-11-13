@@ -8,7 +8,7 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      data: require('res/beef2.json'),
+      data: require('res/dist/beef2.json'),
       cur_time: null
     }
   }
