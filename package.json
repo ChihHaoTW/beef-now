@@ -4,7 +4,7 @@
   "description": "beef-bow",
   "scripts": {
     "build": "./node_modules/.bin/webpack",
-    "start": "./node_modules/.bin/gulp --require livescript dev-server",
+    "start": "./node_modules/.bin/gulp --require livescript",
     "server": "./node_modules/.bin/gulp --require livescript server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
