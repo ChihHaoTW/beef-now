@@ -16,7 +16,8 @@ gulp.task \dev-server <[link]> !->
 
 gulp.task \link !->
   cb = it
-  <-! child_process.exec "ln -fsT #{path.resolve \bin, \dist} #{path.resolve \app, \res, \dist}"
+  <-! child_process.exec "ln -fsn #{path.resolve \bin, \dist} #{path.resolve \app, \res, \dist\}"
+  return console.log it if it
   cb!
 
 gulp.task \default <[dev-server]>
