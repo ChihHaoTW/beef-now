@@ -31,11 +31,11 @@ class App extends React.Component {
         { 
           this.state.cur_time ?
             this.state.data.filter(e => {
-              var startTime, endTime, timeArray;
-              if(e.openTime[this.state.cur_time.format("ddd")][0])
-                timeArray = e.openTime[this.state.cur_time.format("ddd")][0].split("-")
-              
-              startTime= timeArray[0]
+              if(!e.openTime[this.state.cur_time.format("ddd")][0]) return false
+
+              var endTime
+              var timeArray = e.openTime[this.state.cur_time.format("ddd")][0].split("-")
+              var startTime= timeArray[0]
               if(!timeArray[1]) endTime = "24:00"
               else endTime = timeArray[1]
 
